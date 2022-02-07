@@ -6,21 +6,11 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
+    <div className="plugin">
+        <p>RemNote Plugin</p>
         <p>
           <a
-            className="App-link"
+            className="link"
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
@@ -29,15 +19,17 @@ function App() {
           </a>
           {' | '}
           <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
+            className="link"
+            href="https://remnote.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Vite Docs
+            RemNote Plugin Docs
           </a>
         </p>
-      </header>
+        <p>
+          <button>Show Toast</button>
+        </p>
     </div>
   )
 }
