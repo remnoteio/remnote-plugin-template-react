@@ -2,9 +2,11 @@ import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { RNPlugin } from 'remnote-plugin-sdk';
+import { id } from '../manifest.json';
 
-class Pomodoro extends RNPlugin {
-  id = 'com.remnote.pomodoro';
+
+class Plugin extends RNPlugin {
+  id = id;
 
   async onActivate() {
     this.registerCommand({
@@ -19,7 +21,7 @@ class Pomodoro extends RNPlugin {
   }
 }
 
-const plugin = new Pomodoro();
+const plugin = new Plugin();
 plugin.run();
 
 function App() {
@@ -48,7 +50,10 @@ function App() {
         </a>
       </p>
       <p>
-        <button onClick={() => plugin.toast('Hello World!')}>Show Toast</button>
+        <button onClick={() => {
+          console.log("AAAAAAAAAAAAAAAA");
+          plugin.toast('Hello World!')
+        }}>Show Toast</button>
       </p>
     </div>
   );
