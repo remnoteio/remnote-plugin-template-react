@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { RNPlugin } from 'remnote-plugin-sdk';
 import { id } from '../manifest.json';
@@ -11,13 +10,11 @@ class Plugin extends RNPlugin {
   async onActivate() {
     this.registerCommand({
       id: `${this.id}.reminder`,
-      label: 'Remind me in 25min',
+      name: 'Remind me in 25min',
       action: () => {
         setTimeout(() => this.toast('Reminder is up!'), 2000);
       },
     });
-
-    this.registerWidget('pomodoro', 'QueueToolbar', {});
   }
 }
 
@@ -25,7 +22,8 @@ const plugin = new Plugin();
 plugin.run();
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [colorIndex, setColorIndex] = useState(0);
+  const colors = ['red', 'green', 'blue'];
 
   return (
     <div className="plugin">
@@ -51,9 +49,13 @@ function App() {
       </p>
       <p>
         <button onClick={() => {
-          console.log("AAAAAAAAAAAAAAAA");
           plugin.toast('Hello World!')
         }}>Show Toast</button>
+        <button onClick={() => {
+          const color = colors[colorIndex];
+          setColorIndex((colorIndex + 1) % colors.length);
+          plugin.registerCSS('background', `.rem-text { color: ${color};`)
+        }}>Add CSS</button>
       </p>
     </div>
   );
