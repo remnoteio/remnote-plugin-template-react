@@ -1,4 +1,16 @@
 {
-    "author": "J.R.R. Tolkien",
-    "id": "com.example.remnote-plugin"
+    "manifestVersion": 1,
+    "id": "sample_plugin",
+    "name": "Sample Plugin",
+    "author": "The RemNote Team",
+    "description": "A sample plugin to test the plugin system",
+    "authorizedActions": "Read",
+    "requestNative": false,
+    "baseUrl": "http://localhost:3001/",
+    "repoUrl": "https://github.com/remnoteio/remnote-plugin-template-react",
+    "version": {
+        "major": 0,
+        "minor": 1,
+        "patch": 1
+    }
 }
