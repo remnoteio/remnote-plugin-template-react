@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { RNPlugin, WidgetLocation } from "remnote-plugin-sdk";
-import { id } from "../manifest.json";
 import "./App.css";
 
 class Plugin extends RNPlugin {
-  id = id;
-
   async onActivate(mountDiv: HTMLElement | null, rootURL: string) {
     console.log("Plugin has been activated!");
 
