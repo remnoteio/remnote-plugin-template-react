@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { RNPlugin, WidgetLocation } from "remnote-plugin-sdk";
-import { id } from "../manifest.json";
+import { id } from "../public/manifest.json";
 
 import React from "react";
 import ReactDOM from "react-dom";

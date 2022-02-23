@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "dev-prod": "concurrently npm:build-watch npm:preview",
     "tsc": "tsc",
     "build": "vite build",
+    "build-watch": "vite build --watch",
     "preview": "vite preview"
   },
   "dependencies": {
+    "concurrently": "^7.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

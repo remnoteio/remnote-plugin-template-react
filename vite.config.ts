@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-// import { defaultRemNotePluginViteConfig } from "remnote-plugin-sdk";
 const { resolve } = require("path");
+// import { defaultRemNotePluginViteConfig } from "remnote-plugin-sdk";
 
 export function defaultRemNotePluginViteConfig(
   resolve: any,
@@ -35,5 +35,5 @@ export function defaultRemNotePluginViteConfig(
 }
 
 export default defineConfig(
-  defaultRemNotePluginViteConfig(require, [react()], ["widget1"])
+  defaultRemNotePluginViteConfig(resolve, [react()], ["widget1"])
 );
