@@ -4,13 +4,26 @@
     "name": "Sample Plugin",
     "author": "The RemNote Team",
     "description": "A sample plugin to test the plugin system",
-    "authorizedActions": "Read",
+    "authorizedActions": "ReadCreate",
     "requestNative": false,
-    "baseUrl": "http://localhost:3001/",
+    "requiredScopes": [
+        {
+            "type": "DescendantsOfName",
+            "descriptor": "Sample Plugin"
+        },
+        {
+            "type": "DescendantsOfName",
+            "descriptor": "New Rem"
+        },
+        {
+            "type": "DescendantsOfName",
+            "descriptor": "Another Rem"
+        }
+    ],
     "repoUrl": "https://github.com/remnoteio/remnote-plugin-template-react",
     "version": {
         "major": 0,
         "minor": 1,
-        "patch": 1
+        "patch": 22
     }
 }
