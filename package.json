@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "concurrently npm:build-watch npm:preview",
-    "build": "vite build --sourcemaps false",
+    "build": "vite build --sourcemap false",
     "build-watch": "vite build --watch",
     "preview": "vite preview"
   },
