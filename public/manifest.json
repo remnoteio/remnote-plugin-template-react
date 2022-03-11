@@ -9,15 +9,7 @@
     "requiredScopes": [
         {
             "type": "DescendantsOfName",
-            "descriptor": "Sample Plugin"
-        },
-        {
-            "type": "DescendantsOfName",
-            "descriptor": "New Rem"
-        },
-        {
-            "type": "DescendantsOfName",
-            "descriptor": "Another Rem"
+            "remName": "Sample Plugin"
         }
     ],
     "repoUrl": "https://github.com/remnoteio/remnote-plugin-template-react",
@@ -25,5 +17,8 @@
         "major": 0,
         "minor": 1,
         "patch": 22
-    }
+    },
+    "widgets": [
+        "widget1"
+    ]
 }
