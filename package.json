@@ -5,7 +5,9 @@
     "dev": "concurrently npm:build-watch npm:preview",
     "build": "vite build --sourcemap false",
     "build-watch": "vite build --watch",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preinstall": "node scripts/checkNodeVersion",
+    "prestart": "node scripts/checkNodeVersion"
   },
   "dependencies": {
     "concurrently": "^7.0.0",
