@@ -1,24 +1,21 @@
 {
-    "manifestVersion": 1,
-    "id": "sample_plugin",
-    "name": "Sample Plugin",
-    "author": "The RemNote Team",
-    "description": "A sample plugin to test the plugin system",
-    "authorizedActions": "ReadCreate",
-    "requestNative": false,
-    "requiredScopes": [
-        {
-            "type": "DescendantsOfName",
-            "remName": "Sample Plugin"
-        }
-    ],
-    "repoUrl": "https://github.com/remnoteio/remnote-plugin-template-react",
-    "version": {
-        "major": 0,
-        "minor": 1,
-        "patch": 22
-    },
-    "widgets": [
-        "widget1"
-    ]
+  "manifestVersion": 1,
+  "id": "plugin_template",
+  "name": "Plugin Template",
+  "author": "remnote",
+  "repoUrl": "",
+  "version": {
+    "major": 0,
+    "minor": 1,
+    "patch": 0
+  },
+  "description": "",
+  "authorizedActions": "Read",
+  "requestNative": false,
+  "requiredScopes": [
+    {
+      "type": "All",
+      "level": "Read"
+    }
+  ]
 }

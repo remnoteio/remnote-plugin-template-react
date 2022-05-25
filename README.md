@@ -1,31 +1,57 @@
-# Template for React-based RemNote Plugins
+# RemNote Plugin Template 
 
-## Usage
+## Required Software
 
-**Prerequisites**: You need to have `git` and `node` installed and some basic understanding of React.
+You'll need the following software to start developing:
 
-1. Create a new repo based on this template.
-2. Change the `id` in `manifest.json`.
-3. Install dependencies with `npm install`.
-4. Start plugin development server with `npm run dev` for sandbox mode.
+1. [Node.js](https://nodejs.org/en/download/) v14.
 
-# Local testing
+Please note that v14 is **not the latest version of node** - ensure that the version you install is **v14** rather than the latest version, or your plugin will not compile properly.
 
-## Sandbox mode
+2. [A GitHub Account](https://github.com/)
 
-Run `npm run dev`
+3. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-## Native mode
+4. An IDE or Text Editor
 
-1. Run `npx serve -l 3002 --cors` and keep the server running to serve the assets built every time you run `npm build`.
-2. Run `npm build` EVERY TIME YOU MAKE A CHANGE (we need something better here still)
+We recommend using [Visual Studio Code](https://code.visualstudio.com/), but any other IDE or text editor will work.
 
-# Adding new widgets:
+## Template Setup Guide
 
-To add a widget with name `widget2`:
+### Clone the Template
 
-1. Create `widget2.js` in the `src` folder
-   Copy the existing `widget1.js` as an example.
-2. Create `widget2.html` in the `root` folder.
-   Copy the existing `widget1.html` as an example.
-3. Register this `widget2` in `vite.config.ts`. This is a single new line you need to add.
+- Click on the Clone or download button
+- Press "Use HTTPS"
+- Copy the link
+- Open a terminal in the directory where you want to clone the repository
+- Run `git clone <link>` to download the template repository.
+
+### Running the Template
+
+Open your terminal of choice and navigate into the folder of the repository you just cloned. If you are interested in learning about the structure of the plugin template, check the [template documentation](./03_parts_of_template.md) page.
+
+First, check that you have installed the correct version of Node.js (v14).
+
+```bash
+node -v
+```
+
+Then run:
+
+```bash
+npm install
+```
+
+This will install a very minimal React App, along with the RemNote plugin SDK (software development kit).
+
+### Start your plugin
+
+Inside the plugin folder, run:
+
+```bash
+npm run dev-sandbox-only
+```
+
+## Resources
+
+If you are interested in building your own plugins, taking a look through the source code for our example plugins and plugins built by the community would be a great starting point. Of course, you should also check out the official documentation, guides and tutorials on our [plugin website](https://plugins.remnote.com). If you are new to writing plugins, we recommend checking out the [dictionary plugin project tutorial](https://plugins.remnote.com/tutorials/project).

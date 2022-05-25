@@ -1,25 +1,59 @@
 {
+  "private": true,
   "name": "remnote-plugin-template-react",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
-    "dev": "concurrently npm:build-watch npm:preview",
-    "build": "vite build --sourcemap false",
-    "build-watch": "vite build --watch",
-    "preview": "vite preview",
+    "check-types": "tsc",
+    "dev-sandbox-only": "cross-env NODE_ENV=development webpack-dev-server --color --progress",
+    "dev-sandbox-and-native": "concurrently npm:build-watch npm:start",
+    "build": "rm -rf dist && cross-env NODE_ENV=production webpack --color --progress && cd dist && zip -r ../PluginZip.zip ./*",
+    "build-watch": "nodemon --watch 'src/**/* public/**/*' --exec \"npm run build\" -e '*'",
+    "start": "http-server --cors -p 7000 dist -c-1",
     "preinstall": "node scripts/checkNodeVersion",
     "prestart": "node scripts/checkNodeVersion"
   },
+  "nodemonConfig": {
+    "ignore": [
+      "dist/*"
+    ]
+  },
   "dependencies": {
-    "concurrently": "^7.0.0",
+    "@types/mustache": "^4.1.2",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.7.1",
+    "dayjs": "^1.10.8",
+    "mini-css-extract-plugin": "^2.6.0",
+    "nodemon": "^2.0.15",
+    "postcss-import": "^14.0.2",
+    "postcss-loader": "^6.2.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "style-loader": "^3.3.1"
   },
   "devDependencies": {
-    "@types/node": "^17.0.21",
-    "@types/react": "^17.0.33",
-    "@types/react-dom": "^17.0.10",
-    "@vitejs/plugin-react": "^1.0.7",
-    "typescript": "^4.4.4",
-    "vite": "^2.7.2"
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.7",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.5",
+    "react-refresh": "^0.12.0",
+    "@types/node": "^12.12.5",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
+    "autoprefixer": "^10.4.2",
+    "concurrently": "^7.0.0",
+    "copy-webpack-plugin": "^10.2.4",
+    "cross-env": "^6.0.3",
+    "esbuild-loader": "^2.13.1",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.15",
+    "postcss": "^8.4.8",
+    "serve": "^11.3.0",
+    "tailwindcss": "^3.0.23",
+    "typescript": "^3.7.4",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   }
 }
