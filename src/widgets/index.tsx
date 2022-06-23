@@ -2,7 +2,7 @@ import {
   declareIndexPlugin,
   ReactRNPlugin,
   WidgetLocation 
-} from "remnote-plugin-sdk";
+} from "@remnote/plugin-sdk";
 import "../style.css";
 
 async function onActivate(plugin: ReactRNPlugin) {

@@ -2,25 +2,25 @@ import {
  usePlugin,
  renderWidget,
  useRunAPIMethodReactive,
-} from 'remnote-plugin-sdk';
+} from '@remnote/plugin-sdk';
 
 export const SampleWidget = () => {
   const plugin = usePlugin();
-  const name: string | undefined = useRunAPIMethodReactive(
+  const name = useRunAPIMethodReactive(
     plugin.settings.getSetting,
     [],
     "name",
-  )
-  const likesPizza: boolean | undefined = useRunAPIMethodReactive(
+  ) as string | undefined
+  const likesPizza = useRunAPIMethodReactive(
     plugin.settings.getSetting,
     [],
     "pizza",
-  )
-  const favoriteNumber: number | undefined = useRunAPIMethodReactive(
+  ) as boolean | undefined
+  const favoriteNumber = useRunAPIMethodReactive(
     plugin.settings.getSetting,
     [],
     "favorite-number",
-  )
+  ) as number | undefined
 
   return (
     <div>
