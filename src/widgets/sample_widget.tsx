@@ -1,28 +1,23 @@
-import { usePlugin, renderWidget, useRunAPIMethodReactive } from '@remnote/plugin-sdk';
+import { renderWidget, useTracker } from '@remnote/plugin-sdk';
 
 export const SampleWidget = () => {
-  const plugin = usePlugin();
-  const name = useRunAPIMethodReactive(plugin.settings.getSetting, [], 'name') as
-    | string
-    | undefined;
-  const likesPizza = useRunAPIMethodReactive(plugin.settings.getSetting, [], 'pizza') as
-    | boolean
-    | undefined;
-  const favoriteNumber = useRunAPIMethodReactive(
-    plugin.settings.getSetting,
-    [],
-    'favorite-number'
-  ) as number | undefined;
+  const res = useTracker(async (plugin) => {
+    return {
+      name: await plugin.settings.getSetting('name'),
+      likesPizza: await plugin.settings.getSetting('pizza'),
+      favoriteNumber: await plugin.settings.getSetting('favorite-number'),
+    };
+  });
 
-  return (
+  return res ? (
     <div>
       Sample Plugin
       <div>
-        Hi {name}, you {!!likesPizza ? 'do' : "don't"} like pizza and your favorite number is{' '}
-        {favoriteNumber}!
+        Hi {res.name}, you {!!res.likesPizza ? 'do' : "don't"} like pizza and your favorite number
+        is {res.favoriteNumber}!
       </div>
     </div>
-  );
+  ) : null;
 };
 
 renderWidget(SampleWidget);
