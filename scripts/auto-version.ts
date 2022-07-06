@@ -64,7 +64,7 @@ async function main() {
   }
 
   await fs.writeFile(MANIFEST_FILE, JSON.stringify(withVersionInfo, null, 2), "utf8")
-  console.log("Successfully updated version info.");
+  console.log("Successfully updated version info to ", JSON.stringify(versionInfo));
 }
 
 main()
