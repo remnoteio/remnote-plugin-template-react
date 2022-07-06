@@ -2,11 +2,11 @@
   "manifestVersion": 1,
   "id": "plugin_template",
   "name": "Plugin Template",
-  "author": "remnote",
+  "author": "RemNote",
   "repoUrl": "",
   "version": {
     "major": 0,
-    "minor": 1,
+    "minor": 0,
     "patch": 0
   },
   "description": "",
