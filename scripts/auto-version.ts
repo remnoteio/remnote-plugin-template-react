@@ -62,7 +62,11 @@ async function main() {
       ...versionInfo
     },
   }
-
+  console.log(__dirname)
+  if (__dirname.includes("remnote-plugin-template-react")) {
+    console.log("Skipping updating version info")
+    return;
+  }
   await fs.writeFile(MANIFEST_FILE, JSON.stringify(withVersionInfo, null, 2), "utf8")
   console.log("Successfully updated version info to ", JSON.stringify(versionInfo));
 }
