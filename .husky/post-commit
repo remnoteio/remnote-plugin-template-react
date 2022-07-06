@@ -1,7 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-
 echo "Updating version information"
 
 npm run auto-version
