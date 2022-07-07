@@ -22,6 +22,7 @@ async function onActivate(plugin: ReactRNPlugin) {
 
   await plugin.registerWidget('sample_widget', WidgetLocation.RightSidebar, {
     dimensions: { height: 'auto', width: 350 },
+    widgetTabTitle: 'Hello',
   });
 }
 
