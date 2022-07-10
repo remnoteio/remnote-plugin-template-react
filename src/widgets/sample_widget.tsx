@@ -15,8 +15,8 @@ export const SampleWidget = () => {
   ) as number | undefined;
 
   return (
-    <div>
-      Sample Plugin
+    <div className="p-2 m-2 rounded-lg rn-clr-background-light-positive rn-clr-content-positive">
+      <h1 className='text-xl'>Sample Plugin</h1>
       <div>
         Hi {name}, you {!!likesPizza ? 'do' : "don't"} like pizza and your favorite number is{' '}
         {favoriteNumber}!
