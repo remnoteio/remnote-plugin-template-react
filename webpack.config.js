@@ -8,7 +8,6 @@ const { ProvidePlugin, BannerPlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
-const TerserPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -33,7 +32,6 @@ const config = {
   },
   module: {
     rules: [
-      // Use esbuild as a Babel alternative
       {
         test: /\.(ts|tsx|jsx|js)?$/,
         loader: 'esbuild-loader',
@@ -77,6 +75,7 @@ const config = {
     }),
     new ProvidePlugin({
       React: 'react',
+      reactDOM: 'react-dom',
     }),
     isProd &&
       new BannerPlugin({
@@ -91,10 +90,9 @@ const config = {
 };
 
 if (isProd) {
-  // TODO: RE-ENABLE
   config.optimization = {
-    minimize: true,
-    minimizer: [new TerserPlugin({})],
+    minimize: isProd,
+    minimizer: [new ESBuildMinifyPlugin()],
   };
 } else {
   // for more information, see https://webpack.js.org/configuration/dev-server
