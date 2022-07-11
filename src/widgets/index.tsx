@@ -3,6 +3,7 @@ import '../style.css';
 import '../App.css';
 
 async function onActivate(plugin: ReactRNPlugin) {
+  // Register settings
   await plugin.settings.registerStringSetting({
     id: 'name',
     title: 'What is your Name?',
@@ -21,6 +22,20 @@ async function onActivate(plugin: ReactRNPlugin) {
     defaultValue: 42,
   });
 
+
+  // A command that inserts text into the editor if focused.
+  await plugin.registerCommand({
+    id: 'editor-command',
+    name: "Editor Command",
+    action: async () => {
+      plugin.editor.insertPlainText('Hello World!');
+    }
+  });
+
+  // Show a toast notification to the user.
+  await plugin.toast("I'm a toast!");
+
+  // Register a sidebar widget.
   await plugin.registerWidget('sample_widget', WidgetLocation.RightSidebar, {
     dimensions: { height: 'auto', width: "100%" },
   });

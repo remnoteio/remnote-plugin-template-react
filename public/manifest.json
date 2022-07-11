@@ -10,12 +10,12 @@
     "patch": 0
   },
   "description": "",
-  "authorizedActions": "Read",
+  "authorizedActions": "ReadCreateModify",
   "requestNative": false,
   "requiredScopes": [
     {
       "type": "All",
-      "level": "Read"
+      "level": "ReadCreateModify"
     }
   ]
 }
