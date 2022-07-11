@@ -1,18 +1,11 @@
-import { usePlugin, renderWidget, useRunAPIMethodReactive } from '@remnote/plugin-sdk';
+import { usePlugin, renderWidget, useReactiveAPI } from '@remnote/plugin-sdk';
 
 export const SampleWidget = () => {
   const plugin = usePlugin();
-  const name = useRunAPIMethodReactive(plugin.settings.getSetting, [], 'name') as
-    | string
-    | undefined;
-  const likesPizza = useRunAPIMethodReactive(plugin.settings.getSetting, [], 'pizza') as
-    | boolean
-    | undefined;
-  const favoriteNumber = useRunAPIMethodReactive(
-    plugin.settings.getSetting,
-    [],
-    'favorite-number'
-  ) as number | undefined;
+
+  let name = useReactiveAPI(() => plugin.settings.getSetting<string>('name'));
+  let likesPizza = useReactiveAPI(() => plugin.settings.getSetting<boolean>('pizza'));
+  let favoriteNumber = useReactiveAPI(() => plugin.settings.getSetting<number>('favorite-number'));
 
   return (
     <div className="p-2 m-2 rounded-lg rn-clr-background-light-positive rn-clr-content-positive">
