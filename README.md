@@ -35,7 +35,7 @@ We recommend using [Visual Studio Code](https://code.visualstudio.com/), but any
 
 ### Running the Template
 
-Open your terminal of choice and navigate into the folder of the repository you just cloned. If you are interested in learning about the structure of the plugin template, check the [plugin structure documentation](https://plugins.remnote.com/http://advanced/project_structure) page.
+Open your terminal of choice and navigate into the folder of the repository you just cloned. If you are interested in learning about the structure of the plugin template, check the [plugin structure documentation](https://plugins.remnote.com/advanced/project_structure) page.
 
 Then run:
 
