@@ -4,9 +4,7 @@
 
 You'll need the following software to start developing:
 
-1. [Node.js](https://nodejs.org/en/download/) v14.
-
-Please note that v14 is **not the latest version of node** - ensure that the version you install is **v14** rather than the latest version, or your plugin will not compile properly.
+1. [Node.js](https://nodejs.org/en/download/)
 
 2. [A GitHub Account](https://github.com/)
 
