@@ -16,17 +16,26 @@ We recommend using [Visual Studio Code](https://code.visualstudio.com/), but any
 
 ## Template Setup Guide
 
-### Clone the Template
+## Create a new repository from this template
 
+- Above the file list, click the green button which says "Use this template".
+- Select the account you want to own the repository.
+- Type a name for your repository, and an optional description.
+- Choose a repository visibility.
+- Click "Create repository from template".
+
+## Clone your new repository
+
+- Browse to your new GitHub repository
 - Click on the Clone or download button
-- Press "Use HTTPS"
+- Press "HTTPS"
 - Copy the link
 - Open a terminal in the directory where you want to clone the repository
-- Run `git clone <link>` to download the template repository.
+- Run `git clone <link>` to download the repository.
 
 ### Running the Template
 
-Open your terminal of choice and navigate into the folder of the repository you just cloned. If you are interested in learning about the structure of the plugin template, check the [template documentation](./03_parts_of_template.md) page.
+Open your terminal of choice and navigate into the folder of the repository you just cloned. If you are interested in learning about the structure of the plugin template, check the [plugin structure documentation](https://plugins.remnote.com/http://advanced/project_structure) page.
 
 First, check that you have installed the correct version of Node.js (v14).
 
