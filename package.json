@@ -5,19 +5,11 @@
   "license": "MIT",
   "scripts": {
     "check-types": "tsc",
-    "dev-sandbox-only": "cross-env NODE_ENV=development webpack-dev-server --color --progress --no-open",
-    "dev-sandbox-and-native": "concurrently npm:build-watch npm:serve",
-    "build": "rm -rf dist && cross-env NODE_ENV=production webpack --color --progress && cd dist && zip -r ../PluginZip.zip ./*",
-    "build-watch": "nodemon --watch 'src/**/* public/**/*' --exec \"rm -rf dist && cross-env NODE_ENV=development webpack --color --progress\" -e '*'",
-    "serve": "http-server --cors -p 7000 dist -c-1"
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "dist/*"
-    ]
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --color --progress --no-open",
+    "build": "rm -rf dist && cross-env NODE_ENV=production webpack --color --progress && cd dist && zip -r ../PluginZip.zip ./*"
   },
   "dependencies": {
-    "@remnote/plugin-sdk": "^0.0.3",
+    "@remnote/plugin-sdk": "^0.0.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -33,9 +25,7 @@
     "css-loader": "^6.7.1",
     "esbuild-loader": "^2.19.0",
     "html-webpack-plugin": "^5.5.0",
-    "http-server": "^14.1.1",
     "mini-css-extract-plugin": "^2.6.1",
-    "nodemon": "^2.0.19",
     "postcss": "^8.4.14",
     "postcss-import": "^14.1.0",
     "postcss-loader": "^7.0.0",

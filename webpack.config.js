@@ -15,16 +15,19 @@ const isDevelopment = !isProd;
 
 const fastRefresh = isDevelopment ? new ReactRefreshWebpackPlugin() : null;
 
+const SANDBOX_SUFFIX = '-sandbox';
+
 const config = {
   mode: isProd ? 'production' : 'development',
   entry: glob.sync('./src/widgets/**.tsx').reduce(function (obj, el) {
     obj[path.parse(el).name] = el;
+    obj[path.parse(el).name + SANDBOX_SUFFIX] = el;
     return obj;
   }, {}),
 
   output: {
     path: resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: `[name].js`,
     publicPath: '',
   },
   resolve: {
@@ -66,7 +69,7 @@ const config = {
 
       const s = document.createElement('script');
       s.type = "module";
-      s.src = widgetName+".js";
+      s.src = widgetName+"${SANDBOX_SUFFIX}.js";
       document.body.appendChild(s);
       </script>
     `,
@@ -77,11 +80,12 @@ const config = {
       React: 'react',
       reactDOM: 'react-dom',
     }),
-    isProd &&
-      new BannerPlugin({
-        banner: 'const IMPORT_META=import.meta;',
-        raw: true,
-      }),
+    new BannerPlugin({
+      banner: (file) => {
+        return !file.chunk.name.includes(SANDBOX_SUFFIX) ? 'const IMPORT_META=import.meta;' : '';
+      },
+      raw: true,
+    }),
     new CopyPlugin({
       patterns: [{ from: 'public', to: '' }],
     }),
