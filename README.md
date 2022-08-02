@@ -50,7 +50,7 @@ This will install a very minimal React App, along with the RemNote plugin SDK (s
 Inside the plugin folder, run:
 
 ```bash
-npm run dev-sandbox-only
+npm run dev
 ```
 
 ## Resources
