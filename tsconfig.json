@@ -12,5 +12,10 @@
     "isolatedModules": true,
     "esModuleInterop": true
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "include": ["src"]
 }
