@@ -11,6 +11,7 @@
   },
   "description": "",
   "requestNative": false,
+  "enableOnMobile": false,
   "requiredScopes": [
     {
       "type": "All",
