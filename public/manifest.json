@@ -1,4 +1,5 @@
 {
+  "$schema": "../schema.json",
   "manifestVersion": 1,
   "id": "plugin_template",
   "name": "Plugin Template",
