@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "schema": "ts-node --project ./tsconfig.json ./scripts/generate-json-schema.ts",
+    "schema": "ts-node --project ./tsconfig.json ./scripts/schema.ts",
     "postinstall": "npm run schema",
     "check-types": "tsc",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --color --progress --no-open",
