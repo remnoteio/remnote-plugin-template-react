@@ -9,12 +9,14 @@
     "minor": 0,
     "patch": 1
   },
+  "theme": [],
+  "enableOnMobile": false,
   "description": "",
   "requestNative": false,
   "requiredScopes": [
     {
       "type": "All",
-      "level": "ReadCreateModify"
+      "level": "Read"
     }
   ]
 }
