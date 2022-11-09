@@ -47,7 +47,7 @@ const config = {
       {
         test: /\.css$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
           { loader: 'css-loader', options: { url: false } },
           'postcss-loader',
         ],
@@ -55,8 +55,8 @@ const config = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'App.css',
+    isDevelopment ? undefined : new MiniCssExtractPlugin({
+      filename: '[name].css',
     }),
     new HtmlWebpackPlugin({
       templateContent: `
