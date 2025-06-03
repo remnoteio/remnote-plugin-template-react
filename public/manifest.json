@@ -1,22 +1,21 @@
 {
+  "author": "Anisha",
+  "name": "Custom Icons",
+  "description": "Adds icons with customizable size to rems using the Icon powerup.",
+  "enableOnMobile": true,
+  "id": "Anisha-CustomIcons",
+  "repoUrl": "https://github.com/anishaaa1/Custom-Icons",
   "manifestVersion": 1,
-  "id": "plugin_template",
-  "name": "Plugin Template",
-  "author": "remnote",
-  "repoUrl": "",
   "version": {
     "major": 0,
     "minor": 0,
-    "patch": 1
+    "patch": 2
   },
-  "theme": [],
-  "enableOnMobile": false,
-  "description": "",
   "requestNative": false,
   "requiredScopes": [
     {
       "type": "All",
-      "level": "Read"
+      "level": "ReadCreateModify"
     }
   ]
 }
