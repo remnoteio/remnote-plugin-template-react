@@ -9,7 +9,7 @@
     "build": "npx remnote-plugin validate && shx rm -rf dist && cross-env NODE_ENV=production webpack --color --progress && shx cp README.md dist && cd dist && bestzip ../PluginZip.zip ./*"
   },
   "dependencies": {
-    "@remnote/plugin-sdk": "latest",
+    "@remnote/plugin-sdk": "^0.0.46",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -24,7 +24,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
-    "esbuild-loader": "^2.19.0",
+    "esbuild-loader": "^4.3.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss": "^8.4.14",
