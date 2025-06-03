@@ -3,12 +3,13 @@
   "name": "Custom Icons",
   "description": "Adds icons with customizable size to rems using the Icon powerup.",
   "enableOnMobile": true,
-  "id": "Anisha",
+  "id": "Anisha-CustomIcons",
+  "repoUrl": "https://github.com/anishaaa1/Custom-Icons",
   "manifestVersion": 1,
   "version": {
     "major": 0,
     "minor": 0,
-    "patch": 1
+    "patch": 2
   },
   "requestNative": false,
   "requiredScopes": [
