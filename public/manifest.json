@@ -1,22 +1,21 @@
 {
+  "author": "timkingnf",
+  "name": "remnote-subrem-count",
+  "description": "count children rems",
+  "enableOnMobile": false,
+  "id": "timkingnf-wbcbqz0",
   "manifestVersion": 1,
-  "id": "plugin_template",
-  "name": "Plugin Template",
-  "author": "remnote",
-  "repoUrl": "",
   "version": {
     "major": 0,
     "minor": 0,
     "patch": 1
   },
-  "theme": [],
-  "enableOnMobile": false,
-  "description": "",
   "requestNative": false,
   "requiredScopes": [
     {
       "type": "All",
       "level": "Read"
     }
-  ]
+  ],
+  "repoUrl": "https://github.com/TimKingNF/remnote-subrem-count"
 }

@@ -1,42 +1,42 @@
-import { declareIndexPlugin, ReactRNPlugin, WidgetLocation } from '@remnote/plugin-sdk';
+import { declareIndexPlugin, ReactRNPlugin, AppEvents, WidgetLocation } from '@remnote/plugin-sdk';
 import '../style.css';
 import '../App.css';
 
+let lastFloatingWidgetId: string;
+
 async function onActivate(plugin: ReactRNPlugin) {
-  // Register settings
-  await plugin.settings.registerStringSetting({
-    id: 'name',
-    title: 'What is your Name?',
-    defaultValue: 'Bob',
-  });
 
-  await plugin.settings.registerBooleanSetting({
-    id: 'pizza',
-    title: 'Do you like pizza?',
-    defaultValue: true,
-  });
+  await plugin.app.registerWidget(
+    "subrem-count-widget",
+    WidgetLocation.FloatingWidget,
+    {
+      dimensions: { height: "auto", width: "250px" },
+    }
+  );
 
-  await plugin.settings.registerNumberSetting({
-    id: 'favorite-number',
-    title: 'What is your favorite number?',
-    defaultValue: 42,
-  });
+  const openAutocompleteWindow = async () => {
+    const caret = await plugin.editor.getCaretPosition();  // 获取插入光标的位置坐标
+    lastFloatingWidgetId = await plugin.window.openFloatingWidget(
+      "subrem-count-widget",
+      { top: caret ? caret.y + 25 : undefined, left: caret?.x }
+    );
+  };
 
-  // A command that inserts text into the editor if focused.
-  await plugin.app.registerCommand({
-    id: 'editor-command',
-    name: 'Editor Command',
-    action: async () => {
-      plugin.editor.insertPlainText('Hello World!');
-    },
-  });
+  plugin.event.addListener(AppEvents.FocusedRemChange, undefined, async () => {
+    const rem = await plugin.focus.getFocusedRem();
+    const children = await rem?.getChildrenRem();
+    if (children?.length == 0) {
+      return;
+    }
 
-  // Show a toast notification to the user.
-  await plugin.app.toast("I'm a toast!");
+    if (
+      lastFloatingWidgetId &&
+      (await plugin.window.isFloatingWidgetOpen(lastFloatingWidgetId))
+    ) {
+      return;
+    }
 
-  // Register a sidebar widget.
-  await plugin.app.registerWidget('sample_widget', WidgetLocation.RightSidebar, {
-    dimensions: { height: 'auto', width: '100%' },
+    await openAutocompleteWindow();
   });
 }
 
