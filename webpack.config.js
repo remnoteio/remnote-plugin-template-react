@@ -18,8 +18,12 @@ const fastRefresh = isDevelopment ? new ReactRefreshWebpackPlugin() : null;
 const SANDBOX_SUFFIX = '-sandbox';
 
 const widgetEntries = glob.sync('./src/widgets/**.tsx').reduce((obj, el) => {
-  obj[path.parse(el).name] = el;
-  obj[path.parse(el).name + SANDBOX_SUFFIX] = el;
+  const relPath = path
+    .relative('./src/widgets', el)
+    .replace(/\\/g, '/')
+    .replace(/\.tsx$/, '');
+  obj[relPath] = el;
+  obj[relPath + SANDBOX_SUFFIX] = el;
   return obj;
 }, {});
 
