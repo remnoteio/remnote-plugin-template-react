@@ -94,7 +94,10 @@ const config = {
       raw: true,
     }),
     new CopyPlugin({
-      patterns: [{ from: 'public', to: '' }],
+      patterns: [
+        { from: 'public', to: '' },
+        { from: 'README.md', to: '' },
+      ],
     }),
     fastRefresh,
   ].filter(Boolean),
