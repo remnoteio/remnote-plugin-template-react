@@ -1,6 +1,6 @@
 import { declareIndexPlugin, type ReactRNPlugin, WidgetLocation } from '@remnote/plugin-sdk';
 import '../style.css';
-import '../index.css';
+import '../index.css'; // import <widget-name>.css
 
 async function onActivate(plugin: ReactRNPlugin) {
   // Register settings

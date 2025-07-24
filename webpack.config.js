@@ -17,12 +17,6 @@ const fastRefresh = isDevelopment ? new ReactRefreshWebpackPlugin() : null;
 
 const SANDBOX_SUFFIX = '-sandbox';
 
-const widgetEntries = glob.sync('./src/widgets/**.tsx').reduce((obj, el) => {
-  obj[path.parse(el).name] = el;
-  obj[path.parse(el).name + SANDBOX_SUFFIX] = el;
-  return obj;
-}, {});
-
 const config = {
   mode: isProd ? 'production' : 'development',
   entry: glob.sync('./src/widgets/**/*.tsx').reduce((obj, el) => {
