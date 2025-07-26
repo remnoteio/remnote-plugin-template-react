@@ -5,7 +5,6 @@ var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
 const { ProvidePlugin, BannerPlugin } = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const CopyPlugin = require('copy-webpack-plugin');
@@ -51,20 +50,11 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: [
-          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { url: false } },
-          'postcss-loader',
-        ],
+        use: ['style-loader', { loader: 'css-loader', options: { url: false } }, 'postcss-loader'],
       },
     ],
   },
   plugins: [
-    isDevelopment
-      ? undefined
-      : new MiniCssExtractPlugin({
-          filename: '[name].css',
-        }),
     new HtmlWebpackPlugin({
       templateContent: `
       <body></body>
@@ -89,7 +79,18 @@ const config = {
     }),
     new BannerPlugin({
       banner: (file) => {
-        return !file.chunk.name.includes(SANDBOX_SUFFIX) ? 'const IMPORT_META=import.meta;' : '';
+        // Only add the banner to JavaScript files, not CSS files
+        if (
+          !file.chunk.name.includes(SANDBOX_SUFFIX) &&
+          file.filename &&
+          (file.filename.endsWith('.js') ||
+            file.filename.endsWith('.jsx') ||
+            file.filename.endsWith('.ts') ||
+            file.filename.endsWith('.tsx'))
+        ) {
+          return 'const IMPORT_META=import.meta;';
+        }
+        return '';
       },
       raw: true,
     }),
