@@ -1,6 +1,7 @@
 /*
  * This file contains the tailwind directives and equivalent styles
  * to replicate the behavior inside the Shadow DOM of native plugins.
+ * You can add your own styles here, at the bottom of the file.
  */
 
 @tailwind base;
@@ -16,6 +17,7 @@
 html,
 :host-context(div) {
   line-height: 1.5; /* 1 */
+  text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%; /* 2 */
   -moz-tab-size: 4; /* 3 */
   tab-size: 4; /* 3 */
@@ -43,3 +45,5 @@ body,
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Add your plugin styles here */

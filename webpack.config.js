@@ -117,6 +117,16 @@ if (isProd) {
   config.optimization = {
     minimize: isProd,
     minimizer: [new ESBuildMinifyPlugin()],
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          type: 'css/mini-extract',
+          chunks: 'all',
+          enforce: true,
+        },
+      },
+    },
   };
 } else {
   // for more information, see https://webpack.js.org/configuration/dev-server

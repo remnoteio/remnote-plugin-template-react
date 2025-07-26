@@ -1,0 +1,5 @@
+/* Styles specifically for the SampleWidget */
+.sample-widget-container {
+  border: 2px dashed blue;
+  padding: 10px;
+}
