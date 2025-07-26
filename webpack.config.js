@@ -32,6 +32,7 @@ const config = {
   output: {
     path: resolve(__dirname, 'dist'),
     filename: `[name].js`,
+    chunkFilename: 'vendors.js',
     publicPath: '',
   },
   resolve: {
@@ -50,7 +51,29 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', { loader: 'css-loader', options: { url: false } }, 'postcss-loader'],
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              // Optimize for production
+              injectType: 'singletonStyleTag',
+              // Minimize CSS injection overhead
+              attributes: {
+                'data-remnote-plugin': 'true',
+              },
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+              // Enable CSS optimization
+              importLoaders: 1,
+              modules: false,
+            },
+          },
+          'postcss-loader',
+        ],
       },
     ],
   },
@@ -64,10 +87,15 @@ const config = {
       const widgetName = queryParams["widgetName"];
       if (widgetName == undefined) {document.body.innerHTML+="Widget ID not specified."}
 
-      const s = document.createElement('script');
-      s.type = "module";
-      s.src = widgetName+"${SANDBOX_SUFFIX}.js";
-      document.body.appendChild(s);
+      const vendorScript = document.createElement('script');
+      vendorScript.type = "module";
+      vendorScript.src = "vendors.js";
+      document.body.appendChild(vendorScript);
+
+      const widgetScript = document.createElement('script');
+      widgetScript.type = "module";
+      widgetScript.src = widgetName+"${SANDBOX_SUFFIX}.js";
+      document.body.appendChild(widgetScript);
       </script>
     `,
       filename: 'index.html',
@@ -81,6 +109,7 @@ const config = {
       banner: (file) => {
         // Only add the banner to JavaScript files, not CSS files
         if (
+          file.chunk?.name &&
           !file.chunk.name.includes(SANDBOX_SUFFIX) &&
           file.filename &&
           (file.filename.endsWith('.js') ||
@@ -108,6 +137,25 @@ if (isProd) {
   config.optimization = {
     minimize: isProd,
     minimizer: [new ESBuildMinifyPlugin()],
+    // Optimize CSS injection performance
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        // Shared vendor code
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+          priority: 10,
+        },
+        // Keep CSS with the chunks that use it
+        default: {
+          minChunks: 1,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
   };
 } else {
   // for more information, see https://webpack.js.org/configuration/dev-server
