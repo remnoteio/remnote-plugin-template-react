@@ -51,11 +51,7 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: [
-          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { url: false } },
-          'postcss-loader',
-        ],
+        use: ['style-loader', { loader: 'css-loader', options: { url: false } }, 'postcss-loader'],
       },
     ],
   },
