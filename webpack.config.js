@@ -89,7 +89,17 @@ const config = {
     }),
     new BannerPlugin({
       banner: (file) => {
-        return !file.chunk.name.includes(SANDBOX_SUFFIX) ? 'const IMPORT_META=import.meta;' : '';
+        // Only add the banner to JavaScript files, not CSS files
+        if (
+          !file.chunk.name.includes(SANDBOX_SUFFIX) &&
+          (file.chunk.name.endsWith('.js') ||
+            file.chunk.name.endsWith('.jsx') ||
+            file.chunk.name.endsWith('.ts') ||
+            file.chunk.name.endsWith('.tsx'))
+        ) {
+          return 'const IMPORT_META=import.meta;';
+        }
+        return '';
       },
       raw: true,
     }),
